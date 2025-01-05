@@ -29,7 +29,7 @@
                 <!-- Logo Section -->
                 <div class="flex items-center">
                     <a href="{{ route('home') }}" class="flex items-center">
-                        <img src="{{ asset('images/logo_full.png') }}" alt="SurePack Logo" class="h-16 w-auto mr-3">
+                        <img src="{{ asset('images/logo_full.png') }}" alt="SurePack Logo is here" class="h-16 w-auto mr-3">
                     </a>
                 </div>
 
