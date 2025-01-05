@@ -25,9 +25,9 @@
     <!-- Main Navigation -->
     <nav class="bg-white shadow-lg sticky top-0 z-50">
         <div class="container mx-auto px-4">
-            <div class="flex justify-between items-center py-4">
+            <div class="flex justify-between items-center py-4 ">
                 <!-- Logo Section -->
-                <div class="flex items-center">
+                <div class="flex items-center ">
                     <a href="{{ route('home') }}" class="flex items-center">
                         <img src="{{ asset('images/logo_full.png') }}" alt="SurePack Logo is here" class="h-16 w-auto mr-3">
                     </a>

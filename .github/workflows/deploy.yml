@@ -1,7 +1,7 @@
 name: Deploy to CloudPanel VPS
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   deploy:
@@ -9,34 +9,13 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.2'
-
-      - name: Install Dependencies
-        run: |
-          composer install --no-dev --optimize-autoloader
-          npm install
-          npm run build
-
-      - name: Configure Laravel
-        run: |
-          php artisan config:clear
-          php artisan cache:clear
-          php artisan route:clear
-          php artisan view:clear
-
       - name: Deploy to VPS
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          server: surepackltd.com
+          server: 194.164.76.97
           username: surepackltdftp
           password: Lawal20249##
           server-dir: /home/surepackltd/htdocs/surepackltd.com/public/
-          exclude: |
-            **/.git*
-            **/.git*/**
-            **/node_modules/**
-            **/vendor/**
-            .env
+          timeout: 60000 # Increased timeout
+          protocol: ftp # Explicitly set protocol
+          port: 21 # Explicitly set port
