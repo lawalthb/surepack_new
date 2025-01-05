@@ -1,7 +1,7 @@
 name: Deploy to CloudPanel VPS
 on:
   push:
-    branches: [main]
+    branches: [ main ]
 
 jobs:
   deploy:
@@ -12,10 +12,16 @@ jobs:
       - name: Deploy to VPS
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          server: 194.164.76.97
+          server: 194.164.76.97  # Using IP instead of domain
           username: surepackltdftp
           password: Lawal20249##
           server-dir: /home/surepackltd/htdocs/surepackltd.com/public/
-          timeout: 60000 # Increased timeout
-          protocol: ftp # Explicitly set protocol
-          port: 21 # Explicitly set port
+          timeout: 120000        # 2 minutes timeout
+          port: 21
+          protocol: ftp
+          log-level: verbose     # Detailed logging
+          dangerous-clean-slate: false
+          dry-run: false
+          state-name: .ftp-deploy-sync-state.json
+          retries: 5            # Number of retries
+          retry-delay: 5000     # Delay between retries in milliseconds
