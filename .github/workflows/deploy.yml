@@ -10,10 +10,12 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Deploy to VPS
-        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          server: 194.164.76.97
+          server: surepackltd.com
           username: surepackltdftp
           password: Lawal20249##
-          remote_path: /home/surepackltd/htdocs/surepackltd.com/public/
-          port: 22
+          server-dir: /home/surepackltd/htdocs/surepackltd.com/
+          timeout: 60000 # Increased timeout
+          protocol: ftp # Explicitly set protocol
+          port: 21 # Explicitly set port
