@@ -1,7 +1,7 @@
 name: Deploy to CloudPanel VPS
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   deploy:
@@ -15,22 +15,19 @@ jobs:
           npm install
           npm run build
 
-      - name: Clean Remote Directory
-        uses: appleboy/ssh-action@master
-        with:
-          host: 194.164.76.97
-          username: surepackltdftp
-          password: 'Lawal20249##'
-          port: 22
-          script: |
-            rm -rf /home/surepackltd/htdocs/surepackltd.com/*
-
       - name: Deploy to VPS
         uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
           server: 194.164.76.97
           username: surepackltdftp
           password: 'Lawal20249##'
-          remote_path: '/home/surepackltd/htdocs/surepackltd.com/'
+          local_path: "./*"
+          remote_path: "/home/surepackltd/htdocs/surepackltd.com/"
           port: 22
-          sftpArgs: '-o StrictHostKeyChecking=no'
+          sftpArgs: "-o StrictHostKeyChecking=no"
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            .env
+            README.md
